@@ -558,7 +558,7 @@ API.prototype.buildTxFromPrivateKey = function(privateKey, destinationAddress, o
     function(utxos, next) {
       if (!_.isArray(utxos) || utxos.length == 0) return next(new Error('No utxos found'));
 
-      var fee = opts.fee || 10000;
+      var fee = opts.fee || 100000000;
       var amount = _.sum(utxos, 'satoshis') - fee;
       if (amount <= 0) return next(Errors.INSUFFICIENT_FUNDS);
 
@@ -2039,15 +2039,10 @@ Constants.PATHS = {
 Constants.BIP45_SHARED_INDEX = 0x80000000 - 1;
 
 Constants.UNITS = {
-  btc: {
+  dgb: {
     toSatoshis: 100000000,
     maxDecimals: 6,
     minDecimals: 2,
-  },
-  bit: {
-    toSatoshis: 100,
-    maxDecimals: 0,
-    minDecimals: 0,
   },
 };
 
@@ -2058,9 +2053,9 @@ module.exports = Constants;
 
 var Defaults = {};
 
-Defaults.DEFAULT_FEE_PER_KB = 10000;
+Defaults.DEFAULT_FEE_PER_KB = 100000000;
 Defaults.MIN_FEE_PER_KB = 0;
-Defaults.MAX_FEE_PER_KB = 1000000;
+Defaults.MAX_FEE_PER_KB = 100000000;
 Defaults.MAX_TX_FEE = 1 * 1e8;
 
 module.exports = Defaults;
@@ -14481,20 +14476,21 @@ function removeNetwork(network) {
 addNetwork({
   name: 'livenet',
   alias: 'mainnet',
-  pubkeyhash: 0x00,
+  pubkeyhash: 0x1e,
   privatekey: 0x80,
   scripthash: 0x05,
-  xpubkey: 0x0488b21e,
+  xpubkey:  0x0488b21e,
   xprivkey: 0x0488ade4,
-  networkMagic: 0xf9beb4d9,
-  port: 8333,
+  networkMagic: 0xfac3b6da,
+  port: 12024,
   dnsSeeds: [
-    'seed.bitcoin.sipa.be',
-    'dnsseed.bluematt.me',
-    'dnsseed.bitcoin.dashjr.org',
-    'seed.bitcoinstats.com',
-    'seed.bitnodes.io',
-    'bitseed.xf2.org'
+    '74.208.230.160',
+    '216.250.125.121',
+    '195.130.216.149',
+    '96.18.212.86',
+    '188.226.239.21',
+    '54.201.183.106',
+    '213.81.142.62'
   ]
 });
 
@@ -19178,7 +19174,7 @@ Transaction.NLOCKTIME_BLOCKHEIGHT_LIMIT = 5e8;
 Transaction.NLOCKTIME_MAX_VALUE = 4294967295;
 
 // Value used for fee estimation (satoshis per kilobyte)
-Transaction.FEE_PER_KB = 10000;
+Transaction.FEE_PER_KB = 100000000;
 
 // Safe upper bound for change address script size in bytes
 Transaction.CHANGE_OUTPUT_MAX_SIZE = 20 + 4 + 34 + 4;
@@ -20410,7 +20406,7 @@ var errors = require('./errors');
 var $ = require('./util/preconditions');
 
 var UNITS = {
-  'BTC'      : [1e8, 8],
+  'DGB'      : [1e8, 8],
   'mBTC'     : [1e5, 5],
   'uBTC'     : [1e2, 2],
   'bits'     : [1e2, 2],
@@ -20490,7 +20486,7 @@ Unit.fromObject = function fromObject(data){
  * @returns {Unit} A Unit instance
  */
 Unit.fromBTC = function(amount) {
-  return new Unit(amount, Unit.BTC);
+  return new Unit(amount, Unit.DGB);
 };
 
 /**
@@ -20552,7 +20548,7 @@ Unit.prototype.to = function(code) {
     if (code <= 0) {
       throw new errors.Unit.InvalidRate(code);
     }
-    return parseFloat((this.BTC * code).toFixed(2));
+    return parseFloat((this.DGB * code).toFixed(2));
   }
 
   if (!UNITS[code]) {
@@ -20569,7 +20565,7 @@ Unit.prototype.to = function(code) {
  * @returns {Number} The value converted to BTC
  */
 Unit.prototype.toBTC = function() {
-  return this.to(Unit.BTC);
+  return this.to(Unit.DGB);
 };
 
 /**
@@ -20625,8 +20621,8 @@ Unit.prototype.toString = function() {
  */
 Unit.prototype.toObject = Unit.prototype.toJSON = function toObject() {
   return {
-    amount: this.BTC,
-    code: Unit.BTC
+    amount: this.DGB,
+    code: Unit.DGB
   };
 };
 
