@@ -1,38 +1,4 @@
 {
-  "_args": [
-    [
-      "bitcore-wallet-client@1.3.0",
-      "D:\\EFI\\digistuff\\newcopay\\copay"
-    ]
-  ],
-  "_from": "bitcore-wallet-client@1.3.0",
-  "_id": "bitcore-wallet-client@1.3.0",
-  "_inCache": true,
-  "_installable": true,
-  "_location": "/bitcore-wallet-client",
-  "_nodeVersion": "0.12.7",
-  "_npmUser": {
-    "email": "ematiu@gmail.com",
-    "name": "ematiu"
-  },
-  "_npmVersion": "2.11.3",
-  "_phantomChildren": {},
-  "_requested": {
-    "name": "bitcore-wallet-client",
-    "raw": "bitcore-wallet-client@1.3.0",
-    "rawSpec": "1.3.0",
-    "scope": null,
-    "spec": "1.3.0",
-    "type": "version"
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/bitcore-wallet-client/-/bitcore-wallet-client-1.3.0.tgz",
-  "_shasum": "7ea79df0aa84348b3c068b979c671a3d92fdb0f1",
-  "_shrinkwrap": null,
-  "_spec": "bitcore-wallet-client@1.3.0",
-  "_where": "D:\\EFI\\digistuff\\newcopay\\copay",
   "author": {
     "name": "BitPay Inc"
   },
