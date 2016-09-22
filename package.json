@@ -20,7 +20,7 @@
     "bip38": "^1.3.0",
     "bitcore-lib": "git://github.com/dgbholdings/bitcore-lib.git#ce3dd82348af1091d6bd91e5d60fe3b55ff4c1ac",
     "bitcore-mnemonic": "~1.0.0",
-    "bitcore-message": "git://github.com/dgbholdings/bitcore-message.git#de40f9851005ffc9e68b91c45ef688c966249095",
+    "bitcore-message": "git://github.com/dgbholdings/bitcore-message.git#fa394e76e59cfc3502b47a9d17ea902e3d976338",
     "bitcore-payment-protocol": "~1.0.0",
     "browser-request": "^0.3.3",
     "json-stable-stringify": "^1.0.0",
